@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Electron & MySQL</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body>
+	<ul class="nav nav-tabs">
+		<li class="nav-item">
+		  <a class="nav-link active" data-formulario="tabFormularioProducto" href="#">Productos</a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link" data-formulario="tabFormularioGrupo" href="#">Grupos</a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link" data-formulario="tabFormularioFabricante" href="#">Fabricantes</a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link" data-formulario="tabFormularioProveedor" href="#">Proveedores</a>
+		</li>
+	  </ul>
+	<div class="p-5 m-5 card card-body">
+		<div class="tab-pane fade show active" id="tabFormularioProducto">
+			<h2 class="text-center">REGISTRAR PRODUCTO</h2>
+			<br>
+			<form class="row g-3" id="formularioProducto">
+				<div class="col-12">
+					<label for="nombre" class="form-label">Nombre del producto</label>
+					<input type="text" class="form-control" id="nombre">
+				</div>
+				<div class="col-12">
+					<label for="nombreExtranjero" class="form-label">Nombre extranjero</label>
+					<input type="text" class="form-control" id="nombreExtranjero">
+				</div>
+				<div class="col-md-4">
+					<label for="peso" class="form-label">Peso</label>
+					<input type="text" class="form-control" id="peso">
+				</div>
+				<div class="col-md-4">
+					<label for="precioLista" class="form-label">Precio</label>
+					<input type="text" class="form-control" id="precio">
+				</div>
+				<div class="col-md-4">
+					<label for="unidadMedida" class="form-label">Unidad de medida</label>
+					<input type="text" class="form-control" id="unidadMedida">
+				</div>
+				<div class="col-md-6">
+					<label for="codigoBarra" class="form-label">Código de barra</label>
+					<input type="text" class="form-control" id="codigoBarra">
+				</div>
+				<div class="col-md-6">
+					<label for="codigoAlterno" class="form-label">Código alterno</label>
+					<input type="text" class="form-control" id="codigoAlterno">
+				</div>
+				<div class="col-md-4">
+					<label for="grupo" class="form-label">Grupo</label>
+					<select id="grupo" class="form-select">
+
+					</select>
+				</div>
+				<div class="col-md-4">
+					<label for="fabricante" class="form-label">Fabricante</label>
+					<select id="fabricante" class="form-select">
+
+					</select>
+				</div>
+				<div class="col-md-4">
+					<label for="nombreProveedor" class="form-label">Proveedor</label>
+					<select id="proveedor" class="form-select">
+
+					</select>
+				</div>
+				<div class="col-12 d-flex justify-content-center mt-5" style="gap:10px;">
+					<button type="button" class="btn btn-secondary" id="btn-clean">LIMPIAR</button>
+					  <button type="submit" class="btn btn-primary">REGISTRAR</button>
+				</div>
+			</form>
+		</div>
+		<div class="tab-pane fade display-none" id="tabFormularioGrupo" style="display: none;">
+			<h2 class="text-center">REGISTRAR GRUPO</h2>
+			<br>
+			<form class="row g-3" id="formularioGrupo">
+				<div class="col-12">
+					<label for="nombreGrupo" class="form-label">Nombre del grupo</label>
+					<input type="text" class="form-control" id="nombreGrupo">
+				</div>
+				<div class="col-12 d-flex justify-content-center mt-5" style="gap:10px;">
+					<button type="button" class="btn btn-secondary" id="btn-clean">LIMPIAR</button>
+					  <button type="submit" class="btn btn-primary">REGISTRAR</button>
+				</div>
+			</form>
+		</div>
+		<div class="tab-pane fade" id="tabFormularioFabricante" style="display: none;">
+			<h2 class="text-center">REGISTRAR FABRICANTE</h2>
+			<br>
+			<form class="row g-3" id="formularioFabricante">
+				<div class="col-12">
+					<label for="nombreFabricante" class="form-label">Nombre del fabricante</label>
+					<input type="text" class="form-control" id="nombreFabricante">
+				</div>
+				<div class="col-12 d-flex justify-content-center mt-5" style="gap:10px;">
+					<button type="button" class="btn-clean btn btn-secondary">LIMPIAR</button>
+					  <button type="submit" class="btn btn-primary">REGISTRAR</button>
+				</div>
+			</form>
+		</div>
+		<div class="tab-pane fade" id="tabFormularioProveedor" style="display: none;">
+			<h2 class="text-center">REGISTRAR PROVEEDOR</h2>
+			<br>
+			<form class="row g-3" id="formularioProveedor">
+				<div class="col-12">
+					<label for="nombreProveedor" class="form-label">Nombre del proveedor</label>
+					<input type="text" class="form-control" id="nombreProveedor">
+				</div>
+				<div class="col-12 d-flex justify-content-center mt-5" style="gap:10px;">
+					<button type="button" class="btn btn-secondary" id="btn-clean">LIMPIAR</button>
+					  <button type="submit" class="btn btn-primary">REGISTRAR</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="./script.js"></script>
+</body>
+</html>
