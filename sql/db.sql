@@ -1,6 +1,6 @@
-CREATE DATABASE electrondb;
+CREATE DATABASE electron_db;
 
-USE electrondb;
+USE electron_db;
 
 CREATE TABLE productos(
   	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
