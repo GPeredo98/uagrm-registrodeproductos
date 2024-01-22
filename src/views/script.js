@@ -47,8 +47,6 @@ formularioProducto.addEventListener("submit", async (e) => {
 			selectorProveedor.value,
 			selectorGrupo.value
 		);
-
-		console.log('ioio', producto);
 	
 		const repository = new MySQLProductoRepository();
 		const savedProduct = await producto.registrarProducto(repository);
@@ -159,6 +157,10 @@ document.addEventListener('DOMContentLoaded', async function () {
 			formularioSeleccionado.classList.add('show', 'active');
 		});
 	});
+
+	cargarProveedores();
+	cargarFabricantes();
+	cargarGrupos();
 });
 
 async function cargarProveedores() {
@@ -166,6 +168,7 @@ async function cargarProveedores() {
 	const proveedoresRepository = new MySQLProveedorRepository();
 	let listaProveedores = await proveedores.listarProveedores(proveedoresRepository);
 
+	selectorProveedor.innerHTML = '';
 	listaProveedores.forEach(proveedor => {
 		const optionElement = document.createElement('option');
 		optionElement.value = proveedor.id;
@@ -178,6 +181,7 @@ async function cargarFabricantes() {
 	const fabricantes = new ListarFabricantes();
 	const fabricanteRepository = new MySQLFabricanteRepository();
 	let listaFabricantes = await fabricantes.listarFabricantes(fabricanteRepository);
+	selectorFabricante.innerHTML = '';
 
 	listaFabricantes.forEach(fabricante => {
 		const optionElement = document.createElement('option');
@@ -191,6 +195,7 @@ async function cargarGrupos() {
 	const grupos = new ListarGrupoProductos();
 	const gruposRepository = new MySQLGrupoProductoRepository();
 	let listaGrupos = await grupos.listarGrupoProductos(gruposRepository);
+	selectorGrupo.innerHTML = '';
 
 	listaGrupos.forEach(grupo => {
 		const optionElement = document.createElement('option');
